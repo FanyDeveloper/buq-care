@@ -1,0 +1,25 @@
+/* Buq Care — design tokens (provisórios, sujeitos à aprovação da identidade) */
+:root {
+  /* Paleta */
+  --color-white: #ffffff;
+  --color-offwhite: #fbf9fc;
+  --color-lavender-50: #f6f2fa;
+  --color-lavender-100: #eee6f6;
+  --color-lilac-200: #ddcdee;
+  --color-lilac-300: #c6aee2;
+  --color-violet-400: #9d7cc4;
+  --color-violet-600: #6a4a94;
+  --color-violet-800: #3d2560;
+  --color-ink: #2a1f36;
+  --color-ink-soft: #6c6178;
+
+  /* Tipografia */
+  --font-display: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-sans: var(--font-jost), "Jost", system-ui, sans-serif;
+  --font-hero: var(--font-jakarta), "Plus Jakarta Sans", system-ui, sans-serif;
+
+  /* Layout */
+  --container-max: 1440px;
+  --gutter: clamp(20px, 4vw, 64px);
+  --header-h: 84px;
+}

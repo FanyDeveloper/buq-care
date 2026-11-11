@@ -1,0 +1,327 @@
+/* ============ SEÇÃO — Campanha Body Splash ============
+ * Cenário publicitário em tela cheia + frasco recortado flutuando por cima.
+ * O "palco" tem a proporção da arte (1672×941) e cobre a tela (como object-fit:
+ * cover); o frasco é posicionado em % dentro dele, então nunca desalinha do cenário.
+ */
+.section {
+  position: relative;
+  height: 100vh;
+  height: 100svh;
+  min-height: 600px;
+  overflow: hidden;
+  isolation: isolate;
+  font-family: var(--font-hero);
+  background: var(--color-violet-800);
+}
+
+/* ---------- Momento ---------- */
+.moment {
+  --ink: #fbf6ff;
+  --ink-soft: rgba(251, 246, 255, 0.78);
+  --rule: rgba(251, 246, 255, 0.4);
+  /* escala/deslocamento do frasco dentro do palco (menor que na foto original) */
+  --bottle-scale: 0.8;
+  --bottle-x: 6%;
+  --bottle-y: 4%;
+
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  color: var(--ink);
+}
+
+.moment[data-tone="dark"] {
+  --ink: var(--color-violet-800);
+  --ink-soft: rgba(42, 31, 54, 0.72);
+  --rule: rgba(61, 37, 96, 0.28);
+}
+
+.moment + .moment {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* palco "cover" na proporção da arte */
+.stage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: max(100%, 100svh * 1672 / 941);
+  aspect-ratio: 1672 / 941;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  perspective: 1400px;
+}
+
+.scenery {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.bg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- Frasco ---------- */
+.bottlePos {
+  position: absolute;
+  transform: translate(var(--bottle-x), calc(var(--bottle-y) + var(--bottle-lift, 0%))) scale(var(--bottle-scale));
+  transform-origin: 50% 55%;
+}
+
+.bottle,
+.float {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+}
+
+.bottleImg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* sombra difusa na cor do cenário — profundidade sem contorno duro */
+  filter: drop-shadow(0 28px 36px var(--shadow));
+}
+
+/* sombra de suspensão projetada abaixo do frasco */
+.shadowWrap {
+  position: absolute;
+  left: 8%;
+  right: 30%;
+  bottom: -9%;
+  height: 7%;
+}
+
+.shadow {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--shadow) 0%, transparent 100%);
+  filter: blur(6px);
+}
+
+/* leitura da copy no alto à esquerda, sem cobrir o frasco */
+.scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(55% 60% at 0% 0%, rgba(16, 4, 30, 0.5) 0%, transparent 70%);
+}
+
+.moment[data-tone="dark"] .scrim {
+  background: radial-gradient(55% 60% at 0% 0%, rgba(255, 251, 246, 0.6) 0%, transparent 70%);
+}
+
+.dim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: #120620;
+  opacity: 0;
+}
+
+/* ---------- Copy (alto, à esquerda) ---------- */
+.copy {
+  position: absolute;
+  z-index: 2;
+  left: var(--gutter);
+  top: clamp(96px, 15vh, 160px);
+  max-width: min(30vw, 420px);
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.line {
+  width: 32px;
+  height: 1px;
+  background: var(--rule);
+}
+
+.name {
+  margin: 0 0 20px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(64px, 7.6vw, 128px);
+  line-height: 0.95;
+  letter-spacing: -0.015em;
+}
+
+.text {
+  margin: 0 0 20px;
+  max-width: 340px;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+
+.type {
+  display: inline-block;
+  margin: 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* ---------- Progresso ---------- */
+.rail {
+  --ink: #fbf6ff;
+  position: absolute;
+  z-index: 10;
+  right: var(--gutter);
+  bottom: clamp(24px, 4vh, 40px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--ink);
+  transition: color 0.5s ease;
+}
+
+.rail[data-tone="dark"] {
+  --ink: var(--color-violet-800);
+}
+
+.rail li {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.4;
+  transition: opacity 0.4s ease;
+}
+
+.rail li::after {
+  content: "";
+  width: 18px;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.4s ease;
+}
+
+.rail .railActive {
+  opacity: 1;
+}
+
+.rail .railActive::after {
+  width: 40px;
+}
+
+.railName {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.railActive .railName {
+  opacity: 1;
+}
+
+/* ============ TABLET (≤1024) ============ */
+@media (max-width: 1024px) {
+  .moment {
+    --bottle-scale: 0.72;
+    --bottle-x: 10%;
+  }
+  .copy {
+    max-width: 40vw;
+  }
+  .railName {
+    display: none;
+  }
+}
+
+/* ============ CELULAR (≤640): copy no topo, frasco abaixo ============ */
+@media (max-width: 640px) {
+  .moment {
+    --bottle-scale: 0.6;
+    --bottle-x: 0%;
+    --bottle-y: 14%;
+  }
+  .copy {
+    top: clamp(60px, 8svh, 84px);
+    left: 0;
+    right: 0;
+    max-width: none;
+    text-align: center;
+  }
+  .eyebrow {
+    justify-content: center;
+    margin-bottom: 10px;
+    font-size: 10px;
+  }
+  .name {
+    margin-bottom: 10px;
+    font-size: clamp(54px, 16vw, 76px);
+  }
+  .text {
+    margin: 0 auto 10px;
+    padding: 0 var(--gutter);
+    font-size: 13.5px;
+  }
+  .type {
+    font-size: 10px;
+    padding-top: 10px;
+  }
+  .scrim {
+    background: linear-gradient(180deg, rgba(16, 4, 30, 0.55) 0%, transparent 38%);
+  }
+  .moment[data-tone="dark"] .scrim {
+    background: linear-gradient(180deg, rgba(255, 251, 246, 0.7) 0%, transparent 38%);
+  }
+  .rail {
+    bottom: 16px;
+    right: 50%;
+    transform: translateX(50%);
+    flex-direction: row;
+  }
+  .rail li::after {
+    display: none;
+  }
+}
+
+/* ============ Movimento reduzido: momentos empilhados, sem pin ============ */
+@media (prefers-reduced-motion: reduce) {
+  .section {
+    height: auto;
+  }
+  .moment {
+    position: relative;
+    height: 100svh;
+    min-height: 600px;
+  }
+  .moment + .moment {
+    opacity: 1;
+    visibility: visible;
+  }
+  .rail {
+    display: none;
+  }
+}
