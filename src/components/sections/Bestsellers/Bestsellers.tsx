@@ -20,7 +20,7 @@ if (typeof window !== "undefined") {
 
 function Item({ item, variant, featured = false }: { item: Bestseller; variant: string; featured?: boolean }) {
   return (
-    <article className={`${styles.item} ${styles[variant]}`} data-depth={featured ? 0 : variant === "b" || variant === "c" ? 1 : 0.5}>
+    <article className={`${styles.item} ${styles[variant]}`} data-depth={featured ? 0 : variant === "c" || variant === "f" ? 1 : 0.5}>
       <a href={item.href} className={styles.media} aria-label={`${bestsellersCopy.cta}: ${item.name}`}>
         <Image
           src={item.image.src}
@@ -57,7 +57,7 @@ function Item({ item, variant, featured = false }: { item: Bestseller; variant: 
 
 export default function Bestsellers() {
   const ref = useRef<HTMLElement>(null);
-  const [feat, b, c, ...rest] = bestsellers;
+  const [feat, b, c, d, e, f] = bestsellers;
 
   useLayoutEffect(() => {
     const el = ref.current;
@@ -110,16 +110,22 @@ export default function Bestsellers() {
           <p className={styles.lead}>{bestsellersCopy.lead}</p>
         </header>
 
+        {/* grade única: tamanhos alternados, sem vazios entre os blocos */}
         <div className={styles.stage}>
           <Item item={feat} variant="a" featured />
           <Item item={b} variant="b" />
           <Item item={c} variant="c" />
-        </div>
-
-        <div className={styles.strip}>
-          {rest.map((item, i) => (
-            <Item key={item.id} item={item} variant={`s${i}`} />
-          ))}
+          <Item item={d} variant="d" />
+          <Item item={e} variant="e" />
+          <Item item={f} variant="f" />
+          <div className={`${styles.item} ${styles.more}`}>
+            <p className={styles.moreTitle}>{bestsellersCopy.moreTitle}</p>
+            <p className={styles.line}>{bestsellersCopy.moreText}</p>
+            <a href={bestsellersCopy.moreCta.href} className={styles.button}>
+              {bestsellersCopy.moreCta.label}
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>

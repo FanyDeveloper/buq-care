@@ -11,7 +11,7 @@
     radial-gradient(40% 35% at 0% 60%, rgba(238, 230, 246, 0.9) 0%, transparent 70%),
     radial-gradient(35% 30% at 100% 10%, rgba(250, 226, 236, 0.3) 0%, transparent 70%),
     var(--color-offwhite);
-  padding: clamp(40px, 5vw, 80px) 0 clamp(96px, 10vw, 160px);
+  padding: clamp(32px, 3.5vw, 56px) 0 clamp(96px, 10vw, 160px);
 }
 
 .container {

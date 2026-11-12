@@ -2,7 +2,7 @@
 .section {
   position: relative;
   background: var(--color-offwhite);
-  padding: clamp(24px, 3vw, 48px) 0 clamp(96px, 10vw, 160px);
+  padding: clamp(24px, 3vw, 48px) 0 clamp(24px, 2.5vw, 40px);
 }
 
 /* mais largo que o container padrão: banner quase de ponta a ponta */
@@ -18,7 +18,7 @@
   isolation: isolate;
   overflow: hidden;
   /* mais alto que a arte (≈1.79): object-fit cover corta só um pouco das laterais */
-  aspect-ratio: 1376 / 820;
+  aspect-ratio: 1376 / 920; /* mais alto que a arte: corta só um pouco das laterais */
   margin: 0 auto;
   border-radius: 8px;
   background: var(--color-lavender-100);

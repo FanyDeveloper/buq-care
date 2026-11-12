@@ -17,8 +17,8 @@ export default function Home() {
         <Hero />
         <Trajectory />
         <Categories />
-        <Showcase />
         <Banners />
+        <Showcase />
         <BodySplash />
         <Bestsellers />
         <Founder />

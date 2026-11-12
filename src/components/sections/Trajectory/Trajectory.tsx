@@ -53,6 +53,9 @@ export default function Trajectory() {
       {/* profundidade: pétalas desfocadas e número fantasma */}
       <Image unoptimized src="/images/hero/petal-3.png" alt="" aria-hidden="true" width={648} height={510} className={`${styles.petal} ${styles.petalA}`} />
       <Image unoptimized src="/images/hero/petal-2.png" alt="" aria-hidden="true" width={741} height={451} className={`${styles.petal} ${styles.petalB}`} />
+      <Image unoptimized src="/images/hero/petal-1.png" alt="" aria-hidden="true" width={732} height={529} className={`${styles.petal} ${styles.petalC}`} />
+      <Image unoptimized src="/images/hero/petal-3.png" alt="" aria-hidden="true" width={648} height={510} className={`${styles.petal} ${styles.petalD}`} />
+      <Image unoptimized src="/images/hero/petal-2.png" alt="" aria-hidden="true" width={741} height={451} className={`${styles.petal} ${styles.petalE}`} />
       <span className={styles.ghost} aria-hidden="true">
         20
       </span>

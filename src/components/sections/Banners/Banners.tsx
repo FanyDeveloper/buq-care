@@ -61,6 +61,7 @@ export default function Banners() {
                 width={b.width}
                 height={b.height}
                 className={styles.art}
+                style={b.position ? { objectPosition: b.position } : undefined}
               />
             );
             return (

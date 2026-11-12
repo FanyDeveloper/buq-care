@@ -39,14 +39,19 @@ export default function Hero() {
             Body Splash Violeta
           </p>
           <h1 id="hero-title" className={styles.title}>
-            Sua essência,
-            <br />
+            Sua essência
             <em>sua presença.</em>
           </h1>
           <p className={styles.lead}>
             Descubra fragrâncias que transformam pequenos momentos em
             experiências inesquecíveis.
           </p>
+          <div className={styles.ctas}>
+            <a href="#" className={styles.ctaPrimary}>
+              Descubra BUQ Care
+              <ArrowIcon />
+            </a>
+          </div>
         </div>
 
         {/* 4. Palco do produto — flores posicionadas em relação ao frasco */}
@@ -83,12 +88,6 @@ export default function Hero() {
           <p className={styles.sideText}>
             Intensidade que encanta.
           </p>
-          <div className={styles.ctas}>
-            <a href="#" className={styles.ctaPrimary}>
-              Descubra BUQ Care
-              <ArrowIcon />
-            </a>
-          </div>
         </aside>
       </div>
 

@@ -25,6 +25,9 @@ export const bestsellersCopy = {
   lead: "Kits que conquistaram a rotina de quem ama se cuidar. Escolha o seu e leve a experiência BUQ Care para casa.",
   cta: "Quero conhecer",
   featuredCta: "Descubra o combo",
+  moreTitle: "Encontre o seu favorito.",
+  moreText: "Fragrâncias, cuidados para o corpo e para os cabelos em kits feitos para presentear — ou se presentear.",
+  moreCta: { label: "Ver todos os produtos", href: "#vitrine" },
   watermark: "favoritos",
 };
 

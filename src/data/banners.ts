@@ -10,6 +10,7 @@ export type Banner = {
   width: number;
   height: number;
   alt: string;
+  position?: string; // enquadramento quando o palco corta as laterais
   href?: string;
 };
 
@@ -22,6 +23,7 @@ export const banners: Banner[] = [
     width: 1376,
     height: 768,
     alt: "Campanha Buq Care: dois body splashes sobre pedras em cenário desértico ao entardecer",
+    position: "22% 50%",
   },
   {
     id: "clareiah-ingredientes",
