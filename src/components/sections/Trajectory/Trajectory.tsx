@@ -103,11 +103,11 @@ export default function Trajectory() {
       </div>
 
       {/* profundidade: pétalas desfocadas e número fantasma */}
-      <Image unoptimized src="/images/hero/petal-3.png" alt="" aria-hidden="true" width={648} height={510} className={`${styles.petal} ${styles.petalA}`} />
-      <Image unoptimized src="/images/hero/petal-2.png" alt="" aria-hidden="true" width={741} height={451} className={`${styles.petal} ${styles.petalB}`} />
-      <Image unoptimized src="/images/hero/petal-1.png" alt="" aria-hidden="true" width={732} height={529} className={`${styles.petal} ${styles.petalC}`} />
-      <Image unoptimized src="/images/hero/petal-3.png" alt="" aria-hidden="true" width={648} height={510} className={`${styles.petal} ${styles.petalD}`} />
-      <Image unoptimized src="/images/hero/petal-2.png" alt="" aria-hidden="true" width={741} height={451} className={`${styles.petal} ${styles.petalE}`} />
+      <Image unoptimized src="/images/hero/petal-3.webp" alt="" aria-hidden="true" width={400} height={315} className={`${styles.petal} ${styles.petalA}`} />
+      <Image unoptimized src="/images/hero/petal-2.webp" alt="" aria-hidden="true" width={440} height={268} className={`${styles.petal} ${styles.petalB}`} />
+      <Image unoptimized src="/images/hero/petal-1.webp" alt="" aria-hidden="true" width={440} height={318} className={`${styles.petal} ${styles.petalC}`} />
+      <Image unoptimized src="/images/hero/petal-3.webp" alt="" aria-hidden="true" width={400} height={315} className={`${styles.petal} ${styles.petalD}`} />
+      <Image unoptimized src="/images/hero/petal-2.webp" alt="" aria-hidden="true" width={440} height={268} className={`${styles.petal} ${styles.petalE}`} />
       <span className={styles.ghost} aria-hidden="true">
         20
       </span>

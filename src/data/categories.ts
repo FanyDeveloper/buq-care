@@ -47,7 +47,7 @@ export const categories: Category[] = [
     name: "Produtos Capilares",
     description: "Cuidados especiais para cabelos com mais vida e beleza.",
     image: {
-      src: "/images/categories/hair-care.jpg",
+      src: "/images/categories/hair-care.webp",
       width: 736,
       height: 931,
       alt: "Aplicação de produto capilar com conta-gotas",
@@ -61,7 +61,7 @@ export const categories: Category[] = [
     name: "Skin Care",
     description: "Um ritual de cuidado para valorizar cada detalhe da sua pele.",
     image: {
-      src: "/images/categories/skin-care.jpg",
+      src: "/images/categories/skin-care.webp",
       width: 399,
       height: 501,
       alt: "Creme clareador facial Clareiah Buq Care, 60 g",

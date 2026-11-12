@@ -79,14 +79,14 @@ export const products: Product[] = [
     price: null,
     href: "#",
     image: {
-      src: "/images/products/imbakt-impact.png",
-      width: 1275,
-      height: 971,
+      src: "/images/products/imbakt-impact.webp",
+      width: 1000,
+      height: 762,
       alt: "Perfume Imbakt Impact Buq Care, 75 ml, com estojo",
       position: "78% 50%",
     },
     hoverImage: {
-      src: "/images/products/imbakt-impact-alt.jpg",
+      src: "/images/products/imbakt-impact-alt.webp",
       width: 387,
       height: 469,
       alt: "Perfume Imbakt Impact Buq Care",
@@ -159,7 +159,7 @@ export const products: Product[] = [
     price: null,
     href: "#",
     image: {
-      src: "/images/products/espuma-facial.jpg",
+      src: "/images/products/espuma-facial.webp",
       width: 1024,
       height: 1024,
       alt: "Espuma facial Buq Care",

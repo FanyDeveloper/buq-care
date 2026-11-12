@@ -82,9 +82,9 @@ export default function Hero() {
 
       {/* 3. Pétalas de fundo */}
       <div className={styles.petalsBack} aria-hidden="true">
-        <Image unoptimized src="/images/hero/petal-2.png" alt="" width={741} height={451} className={`${styles.petal} ${styles.pb1}`} />
-        <Image unoptimized src="/images/hero/petal-3.png" alt="" width={648} height={510} className={`${styles.petal} ${styles.pb2}`} />
-        <Image unoptimized src="/images/hero/petal-1.png" alt="" width={732} height={529} className={`${styles.petal} ${styles.pb3}`} />
+        <Image unoptimized src="/images/hero/petal-2.webp" alt="" width={440} height={268} className={`${styles.petal} ${styles.pb1}`} />
+        <Image unoptimized src="/images/hero/petal-3.webp" alt="" width={400} height={315} className={`${styles.petal} ${styles.pb2}`} />
+        <Image unoptimized src="/images/hero/petal-1.webp" alt="" width={440} height={318} className={`${styles.petal} ${styles.pb3}`} />
       </div>
 
       <div className={styles.container}>
@@ -117,13 +117,13 @@ export default function Hero() {
             <span className={styles.ambient} aria-hidden="true" />
             <span className={styles.shadow} aria-hidden="true" />
             {/* atrás do frasco */}
-            <Image unoptimized src="/images/hero/lotus.png" alt="" aria-hidden="true" width={1312} height={1199} className={styles.flowerLotusTop} />
-            <Image unoptimized src="/images/hero/hibiscus-ivory.png" alt="" aria-hidden="true" width={1291} height={1218} className={styles.flowerHibiscusRight} />
-            <Image unoptimized src="/images/hero/hibiscus-ivory.png" alt="" aria-hidden="true" width={1291} height={1218} className={styles.flowerHibiscusLeft} />
-            <Image unoptimized src="/images/hero/lotus.png" alt="" aria-hidden="true" width={1312} height={1199} className={styles.flowerLotusBottom} />
+            <Image unoptimized src="/images/hero/lotus.webp" alt="" aria-hidden="true" width={820} height={749} className={styles.flowerLotusTop} />
+            <Image unoptimized src="/images/hero/hibiscus-ivory.webp" alt="" aria-hidden="true" width={760} height={717} className={styles.flowerHibiscusRight} />
+            <Image unoptimized src="/images/hero/hibiscus-ivory.webp" alt="" aria-hidden="true" width={760} height={717} className={styles.flowerHibiscusLeft} />
+            <Image unoptimized src="/images/hero/lotus.webp" alt="" aria-hidden="true" width={820} height={749} className={styles.flowerLotusBottom} />
             <Image
               unoptimized
-              src="/images/hero/violet-bottle.png"
+              src="/images/hero/violet-bottle.webp"
               alt="Body Splash Deo Colônia Violeta Buq Care, 200 ml"
               width={404}
               height={1412}
@@ -131,7 +131,7 @@ export default function Hero() {
               className={styles.bottle}
             />
             {/* à frente do frasco, sem cobrir o rótulo */}
-            <Image unoptimized src="/images/hero/hibiscus-ivory.png" alt="" aria-hidden="true" width={1291} height={1218} className={styles.flowerHibiscusFront} />
+            <Image unoptimized src="/images/hero/hibiscus-ivory.webp" alt="" aria-hidden="true" width={760} height={717} className={styles.flowerHibiscusFront} />
           </div>
         </div>
 
@@ -149,9 +149,9 @@ export default function Hero() {
 
       {/* 5. Pétalas de primeiro plano */}
       <div className={styles.petalsFront} aria-hidden="true">
-        <Image unoptimized src="/images/hero/petal-1.png" alt="" width={732} height={529} className={`${styles.petal} ${styles.pf1}`} />
-        <Image unoptimized src="/images/hero/petal-3.png" alt="" width={648} height={510} className={`${styles.petal} ${styles.pf2}`} />
-        <Image unoptimized src="/images/hero/petal-2.png" alt="" width={741} height={451} className={`${styles.petal} ${styles.pf3}`} />
+        <Image unoptimized src="/images/hero/petal-1.webp" alt="" width={440} height={318} className={`${styles.petal} ${styles.pf1}`} />
+        <Image unoptimized src="/images/hero/petal-3.webp" alt="" width={400} height={315} className={`${styles.petal} ${styles.pf2}`} />
+        <Image unoptimized src="/images/hero/petal-2.webp" alt="" width={440} height={268} className={`${styles.petal} ${styles.pf3}`} />
       </div>
 
       <p className={styles.scrollHint} aria-hidden="true">
