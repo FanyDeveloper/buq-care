@@ -1,0 +1,221 @@
+/* ============ RODAPÉ — encerramento de marca ============ */
+.footer {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  font-family: var(--font-hero);
+  color: rgba(251, 246, 255, 0.78);
+  background:
+    radial-gradient(70% 60% at 50% 0%, rgba(157, 124, 196, 0.22) 0%, transparent 70%),
+    linear-gradient(180deg, #3d2560 0%, #2a1745 55%, #1c0e30 100%);
+  padding-top: clamp(96px, 10vw, 150px);
+}
+
+/* luz suave que "respira" ao fundo */
+.glow {
+  position: absolute;
+  z-index: -1;
+  left: -10%;
+  top: 18%;
+  width: 60%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(198, 174, 226, 0.16), transparent 70%);
+  pointer-events: none;
+}
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* ---------- 1. Convite final ---------- */
+.closing {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  align-items: end;
+  gap: 48px;
+  padding-bottom: clamp(64px, 7vw, 104px);
+  border-bottom: 1px solid rgba(251, 246, 255, 0.14);
+}
+
+.closingTitle {
+  margin: 0;
+  font-weight: 600;
+  font-size: clamp(40px, 5.2vw, 84px);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  color: #fbf6ff;
+}
+
+.closingTitle em {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-lilac-300);
+}
+
+.closingSide {
+  justify-self: end;
+  max-width: 380px;
+}
+
+.closingText {
+  margin: 0 0 28px;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 28px;
+  border-radius: 999px;
+  background: #fbf6ff;
+  color: var(--color-violet-800);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: background 0.25s, color 0.25s;
+}
+
+.cta:hover {
+  background: var(--color-lilac-300);
+}
+
+/* ---------- 2. Marca + navegação ---------- */
+.main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: 48px;
+  padding: clamp(56px, 6vw, 88px) 0;
+}
+
+.logoLink {
+  display: inline-block;
+}
+
+.logo {
+  display: block;
+  width: clamp(170px, 15vw, 230px);
+  height: auto;
+}
+
+.tagline {
+  max-width: 300px;
+  margin: 22px 0 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(22px, 1.9vw, 28px);
+  line-height: 1.25;
+  color: #fbf6ff;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+}
+
+.colTitle {
+  margin: 0 0 20px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-lilac-300);
+}
+
+.col ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.col a {
+  position: relative;
+  font-size: 15px;
+  color: rgba(251, 246, 255, 0.82);
+  transition: color 0.25s;
+}
+
+.col a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+
+.col a:hover {
+  color: #fff;
+}
+
+.col a:hover::after {
+  transform: scaleX(1);
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 0;
+  border-top: 1px solid rgba(251, 246, 255, 0.14);
+  font-size: 12px;
+  color: rgba(251, 246, 255, 0.55);
+}
+
+.bottom p {
+  margin: 0;
+}
+
+.top {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(251, 246, 255, 0.75);
+  transition: color 0.25s;
+}
+
+.top:hover {
+  color: #fff;
+}
+
+/* ============ TABLET (≤1024) ============ */
+@media (max-width: 1024px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============ CELULAR (≤700) ============ */
+@media (max-width: 700px) {
+  .closing {
+    grid-template-columns: 1fr;
+  }
+  .closingSide {
+    justify-self: start;
+  }
+  .columns {
+    grid-template-columns: 1fr 1fr;
+  }
+  .bottom {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
+}

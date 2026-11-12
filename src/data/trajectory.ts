@@ -25,12 +25,11 @@ export type Indicator = {
 };
 
 export const trajectoryCopy = {
-  // Textos provisórios — substituir pelas copys definitivas.
-  eyebrow: "Texto provisório · Trajetória",
-  titleStart: "Título provisório",
-  titleEmphasis: "sobre a trajetória",
-  titleEnd: "da marca.",
-  lead: "[Texto de apoio provisório] Espaço para uma breve introdução institucional sobre a trajetória e o autocuidado.",
+  eyebrow: "Nossa essência",
+  titleStart: "Beleza em",
+  titleEmphasis: "cada detalhe.",
+  titleEnd: "",
+  lead: "Mais do que cuidar, queremos despertar sensações. Uma experiência de beleza criada para acompanhar você em cada versão de si mesma.",
   sourceNote:
     "Valores de faturamento reportados pelo E-Commerce Brasil (03/11/2026), conforme declaração da empresa. Categorias conforme a loja oficial.",
 };

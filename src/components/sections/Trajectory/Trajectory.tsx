@@ -66,8 +66,12 @@ export default function Trajectory() {
             </p>
             <h2 id="trajectory-title" className={styles.title}>
               {trajectoryCopy.titleStart} <em>{trajectoryCopy.titleEmphasis}</em>
-              <br />
-              {trajectoryCopy.titleEnd}
+              {trajectoryCopy.titleEnd && (
+                <>
+                  <br />
+                  {trajectoryCopy.titleEnd}
+                </>
+              )}
             </h2>
           </div>
           <p className={styles.lead}>{trajectoryCopy.lead}</p>

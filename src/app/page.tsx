@@ -5,6 +5,9 @@ import Categories from "@/components/sections/Categories/Categories";
 import Showcase from "@/components/sections/Showcase/Showcase";
 import Banners from "@/components/sections/Banners/Banners";
 import BodySplash from "@/components/sections/BodySplash/BodySplash";
+import Bestsellers from "@/components/sections/Bestsellers/Bestsellers";
+import Founder from "@/components/sections/Founder/Founder";
+import Footer from "@/components/layout/Footer/Footer";
 
 export default function Home() {
   return (
@@ -17,8 +20,10 @@ export default function Home() {
         <Showcase />
         <Banners />
         <BodySplash />
-        {/* Próximas seções serão adicionadas aqui */}
+        <Bestsellers />
+        <Founder />
       </main>
+      <Footer />
     </>
   );
 }

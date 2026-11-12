@@ -4,7 +4,6 @@ import styles from "./Hero.module.css";
 
 /*
  * HERO — Body Splash Violeta (fase estática, sem animações).
- * Todas as copys são PROVISÓRIAS e serão substituídas pelas definitivas.
  * Camadas (de trás para frente):
  *   1. fundo (gradientes + luz)      2. marca d'água tipográfica
  *   3. pétalas de fundo (desfocadas) 4. flores de base + produto + sombra
@@ -37,16 +36,16 @@ export default function Hero() {
         <div className={styles.copy}>
           <p className={styles.eyebrow}>
             <span className={styles.line} />
-            Texto provisório · Linha Body Splash
+            Body Splash Violeta
           </p>
           <h1 id="hero-title" className={styles.title}>
-            Título <em>provisório</em>
+            Sua essência,
             <br />
-            da campanha.
+            <em>sua presença.</em>
           </h1>
           <p className={styles.lead}>
-            [Texto de apoio provisório] Este espaço receberá a copy definitiva
-            sobre o Body Splash Violeta.
+            Descubra fragrâncias que transformam pequenos momentos em
+            experiências inesquecíveis.
           </p>
         </div>
 
@@ -82,11 +81,11 @@ export default function Hero() {
             Violeta
           </p>
           <p className={styles.sideText}>
-            [Texto provisório] Breve descrição complementar do produto.
+            Intensidade que encanta.
           </p>
           <div className={styles.ctas}>
             <a href="#" className={styles.ctaPrimary}>
-              CTA provisório
+              Descubra BUQ Care
               <ArrowIcon />
             </a>
           </div>

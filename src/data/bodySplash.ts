@@ -9,15 +9,16 @@
  *  - Violeta: fundo "Fundo Futurista Roxo com Reflexos Prismáticos" + frasco de "Perfume Violeta em Brilho Iridescente"
  *
  * `bottle.box`: posição original do frasco no cenário (px da arte 1672×941).
- * `description`: personalidade olfativa — a marca ainda não forneceu; deixe
- * vazio até ter o texto oficial (não inventar). Vazio = linha oculta.
+ * `tagline` + `description` + `cta`: copys de cada produto.
  */
 
 export type BodySplash = {
   id: string;
   name: string;
   type: string;
+  tagline: string;
   description: string;
+  cta: { label: string; href: string };
   tone: "light" | "dark"; // cor do texto sobre o cenário
   shadow: string; // sombra de suspensão, na cor do cenário
   offsetY?: string; // ajuste vertical do frasco (ex.: "-4%" sobe)
@@ -29,6 +30,8 @@ export const SCENE = { width: 1672, height: 941 };
 
 export const bodySplashCopy = {
   eyebrow: "Coleção Body Splash",
+  title: "Sua essência em cada instante.",
+  lead: "Fragrâncias que revelam personalidade, despertam sensações e deixam sua presença na memória.",
 };
 
 const TYPE = "Body Splash Deo Colônia · 200 ml";
@@ -38,7 +41,9 @@ export const bodySplashes: BodySplash[] = [
     id: "violeta",
     name: "Violeta",
     type: TYPE,
-    description: "",
+    tagline: "Intensidade que encanta.",
+    description: "Uma fragrância envolvente para quem transforma presença em personalidade.",
+    cta: { label: "Descubra Violeta", href: "#" },
     tone: "light",
     offsetY: "-4%",
     shadow: "rgba(10, 0, 24, 0.6)",
@@ -49,7 +54,9 @@ export const bodySplashes: BodySplash[] = [
     id: "lumiah",
     name: "Lumiah",
     type: TYPE,
-    description: "",
+    tagline: "Leveza que permanece.",
+    description: "Um toque de frescor e luminosidade para tornar cada momento especial.",
+    cta: { label: "Descubra Lumiah", href: "#" },
     tone: "dark",
     shadow: "rgba(96, 74, 50, 0.32)",
     background: { src: "/images/body-splash/lumiah-fundo.webp", width: 1672, height: 941 },
@@ -59,7 +66,9 @@ export const bodySplashes: BodySplash[] = [
     id: "perola",
     name: "Pérola",
     type: TYPE,
-    description: "",
+    tagline: "O encanto da delicadeza.",
+    description: "Uma experiência luminosa que traduz leveza, elegância e sofisticação.",
+    cta: { label: "Descubra Pérola", href: "#" },
     tone: "light",
     offsetY: "-4%",
     shadow: "rgba(8, 0, 22, 0.6)",

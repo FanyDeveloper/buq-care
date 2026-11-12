@@ -98,11 +98,14 @@
 }
 
 .title {
+  /* mesma fonte do "celebration" (Cormorant Garamond itálica) */
+  font-family: var(--font-display);
+  font-style: italic;
   margin: 0;
-  font-weight: 600;
-  font-size: clamp(32px, 3.4vw, 52px);
-  line-height: 1.08;
-  letter-spacing: -0.035em;
+  font-weight: 500;
+  font-size: clamp(41.6px, 4.42vw, 67.6px);
+  line-height: 1;
+  letter-spacing: -0.01em;
 }
 
 .title em {

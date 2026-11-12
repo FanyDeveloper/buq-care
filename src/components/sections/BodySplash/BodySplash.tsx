@@ -128,6 +128,17 @@ export default function BodySplash() {
   }, []);
 
   return (
+    <>
+    {/* cabeçalho da coleção — mesmo padrão das demais seções */}
+    <header className={styles.intro}>
+      <p className={styles.introEyebrow}>
+        <span className={styles.introLine} />
+        {bodySplashCopy.eyebrow}
+      </p>
+      <h2 className={styles.introTitle}>{bodySplashCopy.title}</h2>
+      <p className={styles.introLead}>{bodySplashCopy.lead}</p>
+    </header>
+
     <section ref={sectionRef} id="body-splash" className={styles.section} aria-label="Coleção Body Splash Buq Care">
       {bodySplashes.map((p, i) => {
         const b = p.bottle.box;
@@ -190,8 +201,12 @@ export default function BodySplash() {
                 {bodySplashCopy.eyebrow}
               </p>
               <h3 className={`${styles.name} ${styles.reveal}`}>{p.name}</h3>
-              {p.description && <p className={`${styles.text} ${styles.reveal}`}>{p.description}</p>}
-              <p className={`${styles.type} ${styles.reveal}`}>{p.type}</p>
+              <p className={`${styles.tagline} ${styles.reveal}`}>{p.tagline}</p>
+              <p className={`${styles.text} ${styles.reveal}`}>{p.description}</p>
+              <a href={p.cta.href} className={`${styles.cta} ${styles.reveal}`}>
+                {p.cta.label}
+                <span aria-hidden="true">↗</span>
+              </a>
             </div>
           </article>
         );
@@ -208,5 +223,6 @@ export default function BodySplash() {
         </ol>
       )}
     </section>
+    </>
   );
 }
