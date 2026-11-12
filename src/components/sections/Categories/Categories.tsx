@@ -1,4 +1,8 @@
+"use client";
+
 import Image from "next/image";
+import { useRef } from "react";
+import { revealOnScroll, useSectionAnimation } from "@/lib/animations";
 import { ArrowIcon } from "@/components/icons/Icons";
 import { categories, categoriesCopy, type Category } from "@/data/categories";
 import styles from "./Categories.module.css";
@@ -43,8 +47,15 @@ function CategoryCard({ data }: { data: Category }) {
 }
 
 export default function Categories() {
+  const ref = useRef<HTMLElement>(null);
+
+  // entrada rápida: fade + leve subida, em sequência
+  useSectionAnimation(ref, (el) => {
+    revealOnScroll(el.querySelectorAll(`.${styles.card}`), el.querySelector(`.${styles.grid}`)!, { y: 36, duration: 0.7, stagger: 0.12 });
+  });
+
   return (
-    <section id="categorias" className={styles.section} aria-labelledby="categories-title">
+    <section ref={ref} id="categorias" className={styles.section} aria-labelledby="categories-title">
       <p className={styles.watermark} aria-hidden="true">
         {categoriesCopy.watermark}
       </p>

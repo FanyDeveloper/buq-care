@@ -33,11 +33,11 @@ export default function Founder() {
         });
         tl.fromTo(
           frame,
-          { clipPath: "inset(10% 34% 10% 34% round 999px)" },
+          { clipPath: "inset(5% 14% 5% 14% round 48px)" },
           { clipPath: "inset(0% 0% 0% 0% round 10px)", ease: "power2.inOut", duration: 1 },
           0,
         )
-          .fromTo(`.${styles.photo}`, { scale: 1.32 }, { scale: 1, ease: "power2.out", duration: 1 }, 0)
+          .fromTo(`.${styles.photo}`, { scale: 1.12 }, { scale: 1, ease: "power2.out", duration: 1 }, 0)
           .fromTo(`.${styles.ghost}`, { yPercent: 30, autoAlpha: 0 }, { yPercent: 0, autoAlpha: 1, ease: "none", duration: 1 }, 0);
 
         gsap.from(`.${styles.reveal}`, {

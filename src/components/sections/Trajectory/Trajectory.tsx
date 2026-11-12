@@ -1,4 +1,8 @@
+"use client";
+
 import Image from "next/image";
+import { useRef } from "react";
+import { gsap, ScrollTrigger, useSectionAnimation } from "@/lib/animations";
 import { indicators, trajectoryCopy, type Indicator } from "@/data/trajectory";
 import styles from "./Trajectory.module.css";
 
@@ -45,10 +49,58 @@ function IndicatorBlock({ data }: { data: Indicator }) {
 }
 
 export default function Trajectory() {
+  const ref = useRef<HTMLElement>(null);
+
+  // contagem progressiva (0 → valor final), uma única vez, ~1,3 s
+  useSectionAnimation(ref, (el) => {
+    const values = Array.from(el.querySelectorAll<HTMLElement>(`.${styles.value}`));
+    const targets = values.map((v) => {
+      const final = v.textContent ?? "";
+      const pad = final.startsWith("0") ? final.length : 0; // mantém "04"
+      const fmt = (n: number) => String(Math.round(n)).padStart(pad, "0");
+      v.textContent = fmt(0);
+      return { v, end: Number(final), fmt, final };
+    });
+    ScrollTrigger.create({
+      trigger: el.querySelector(`.${styles.grid}`),
+      start: "top 80%",
+      once: true,
+      onEnter: () =>
+        targets.forEach(({ v, end, fmt, final }, i) => {
+          const o = { n: 0 };
+          gsap.to(o, {
+            n: end,
+            duration: 1.3,
+            delay: i * 0.08,
+            ease: "power2.out",
+            onUpdate: () => {
+              v.textContent = fmt(o.n);
+            },
+            onComplete: () => {
+              v.textContent = final;
+            },
+          });
+        }),
+    });
+    // ao desmontar/reverter, garante o valor final
+    return () => targets.forEach(({ v, final }) => (v.textContent = final));
+  });
+
   return (
-    <section id="trajetoria" className={styles.section} aria-labelledby="trajectory-title">
+    <section ref={ref} id="trajetoria" className={styles.section} aria-labelledby="trajectory-title">
       {/* transição suave vinda da hero */}
       <div className={styles.fade} aria-hidden="true" />
+
+      {/* iluminação lavanda/violeta — mesma linguagem da hero */}
+      <div className={styles.lights} aria-hidden="true">
+        <span className={`${styles.bokeh} ${styles.bk1}`} />
+        <span className={`${styles.bokeh} ${styles.bk2}`} />
+        <span className={`${styles.bokeh} ${styles.bk3}`} />
+        <span className={`${styles.sparkle} ${styles.sp1}`} />
+        <span className={`${styles.sparkle} ${styles.sp2}`} />
+        <span className={`${styles.sparkle} ${styles.sp3}`} />
+        <span className={`${styles.ring} ${styles.rg1}`} />
+      </div>
 
       {/* profundidade: pétalas desfocadas e número fantasma */}
       <Image unoptimized src="/images/hero/petal-3.png" alt="" aria-hidden="true" width={648} height={510} className={`${styles.petal} ${styles.petalA}`} />

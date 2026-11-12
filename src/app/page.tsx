@@ -1,4 +1,5 @@
 import Header from "@/components/layout/Header/Header";
+import SmoothScroll from "@/components/layout/SmoothScroll/SmoothScroll";
 import Hero from "@/components/sections/Hero/Hero";
 import Trajectory from "@/components/sections/Trajectory/Trajectory";
 import Categories from "@/components/sections/Categories/Categories";
@@ -11,7 +12,7 @@ import Footer from "@/components/layout/Footer/Footer";
 
 export default function Home() {
   return (
-    <>
+    <SmoothScroll>
       <Header />
       <main>
         <Hero />
@@ -24,6 +25,6 @@ export default function Home() {
         <Founder />
       </main>
       <Footer />
-    </>
+    </SmoothScroll>
   );
 }

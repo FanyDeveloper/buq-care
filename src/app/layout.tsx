@@ -32,7 +32,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR" className={`${cormorant.variable} ${jost.variable} ${jakarta.variable}`}>
-      <body>{children}</body>
+      {/* extensões do navegador (ex.: ColorZilla) injetam atributos no <body>
+          antes da hidratação — ignorar essa diferença só neste elemento */}
+      <body suppressHydrationWarning>{children}</body>
     </html>
   );
 }

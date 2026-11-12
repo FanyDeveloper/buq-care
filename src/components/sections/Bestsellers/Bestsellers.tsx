@@ -64,14 +64,16 @@ export default function Bestsellers() {
     if (!el) return;
     const ctx = gsap.context(() => {
       gsap.matchMedia().add("(prefers-reduced-motion: no-preference)", () => {
-        gsap.utils.toArray<HTMLElement>(`.${styles.item}`).forEach((item) => {
-          gsap.from(item, {
-            y: 70,
-            autoAlpha: 0,
-            duration: 1.1,
-            ease: "power3.out",
-            scrollTrigger: { trigger: item, start: "top 88%", once: true },
-          });
+        const items = gsap.utils.toArray<HTMLElement>(`.${styles.item}`);
+        // entrada em lote: itens que entram juntos na tela surgem em sequência (ritmo)
+        gsap.set(items, { autoAlpha: 0, y: 40 });
+        ScrollTrigger.batch(items, {
+          start: "top 88%",
+          once: true,
+          onEnter: (batch) =>
+            gsap.to(batch, { autoAlpha: 1, y: 0, duration: 0.8, stagger: 0.12, ease: "power3.out", clearProps: "transform,opacity,visibility" }),
+        });
+        items.forEach((item) => {
           // paralaxe sutil: itens "de trás" andam mais devagar
           const depth = Number(item.dataset.depth ?? 0);
           if (depth) {

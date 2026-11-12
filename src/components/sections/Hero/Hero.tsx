@@ -1,5 +1,9 @@
+"use client";
+
 import Image from "next/image";
+import { useRef } from "react";
 import { ArrowIcon } from "@/components/icons/Icons";
+import { gsap, useSectionAnimation } from "@/lib/animations";
 import styles from "./Hero.module.css";
 
 /*
@@ -10,13 +14,65 @@ import styles from "./Hero.module.css";
  *   5. pétalas de primeiro plano     6. textos
  */
 export default function Hero() {
+  const ref = useRef<HTMLElement>(null);
+
+  useSectionAnimation(ref, (el) => {
+    const $ = (cls: string) => el.querySelector(`.${cls}`);
+    const flowers = {
+      lotusTop: $(styles.flowerLotusTop),
+      hibRight: $(styles.flowerHibiscusRight),
+      hibLeft: $(styles.flowerHibiscusLeft),
+      lotusBottom: $(styles.flowerLotusBottom),
+      hibFront: $(styles.flowerHibiscusFront),
+    };
+
+    // 1. ENTRADA — surge suave ao carregar (copy em sequência, frasco, flores)
+    gsap
+      .timeline({ defaults: { ease: "power3.out" } })
+      .from([$(styles.eyebrow), $(styles.title), $(styles.lead), $(styles.ctas)], { y: 28, autoAlpha: 0, duration: 0.9, stagger: 0.1 }, 0.1)
+      .from($(styles.bottle), { y: 46, autoAlpha: 0, duration: 1.2 }, 0.2)
+      .from(Object.values(flowers), { scale: 0.86, autoAlpha: 0, duration: 1.1, stagger: 0.08 }, 0.35)
+      .from($(styles.side), { y: 20, autoAlpha: 0, duration: 0.9 }, 0.6)
+      .from(el.querySelectorAll(`.${styles.petal}`), { autoAlpha: 0, duration: 1.4, stagger: 0.06, ease: "power1.out" }, 0.3);
+
+    // 2. ROLAGEM — frasco sobe; cada flor com trajetória e velocidade próprias
+    //    (xPercent/yPercent não conflitam com o y/scale da entrada nem com a rotação do CSS)
+    const scroll = gsap.timeline({
+      defaults: { ease: "none" },
+      scrollTrigger: { trigger: el, start: "top top", end: "bottom top", scrub: 1.2 },
+    });
+    scroll
+      .to($(styles.bottle), { yPercent: -9 }, 0)
+      .to(flowers.lotusTop, { yPercent: -50, xPercent: -26, rotation: "-=6" }, 0) // sobe e abre à esquerda
+      .to(flowers.hibRight, { yPercent: -22, xPercent: 38, rotation: "+=8" }, 0) // espalha à direita
+      .to(flowers.hibLeft, { yPercent: -10, xPercent: -44, rotation: "-=5" }, 0) // espalha à esquerda
+      .to(flowers.lotusBottom, { yPercent: -14, xPercent: 28, rotation: "+=4" }, 0) // leve abertura
+      .to(flowers.hibFront, { yPercent: -34, xPercent: -30, rotation: "+=10" }, 0) // primeiro plano, mais rápida
+      .to(el.querySelectorAll(`.${styles.petalsFront} .${styles.petal}`), { yPercent: -60 }, 0)
+      .to(el.querySelectorAll(`.${styles.petalsBack} .${styles.petal}`), { yPercent: -25 }, 0);
+  });
+
   return (
-    <section className={styles.hero} aria-labelledby="hero-title">
+    <section ref={ref} className={styles.hero} aria-labelledby="hero-title">
       {/* 1. Fundo */}
       <div className={styles.bg} aria-hidden="true">
         <span className={styles.glowTop} />
         <span className={styles.glowProduct} />
         <span className={styles.silk} />
+        <span className={styles.silkLine} />
+        {/* pontos de luz desfocados (bokeh) em lavanda e violeta */}
+        <span className={`${styles.bokeh} ${styles.bk1}`} />
+        <span className={`${styles.bokeh} ${styles.bk2}`} />
+        <span className={`${styles.bokeh} ${styles.bk3}`} />
+        <span className={`${styles.bokeh} ${styles.bk4}`} />
+        <span className={`${styles.bokeh} ${styles.bk5}`} />
+        {/* brilhos pequenos e anéis finos */}
+        <span className={`${styles.sparkle} ${styles.sp1}`} />
+        <span className={`${styles.sparkle} ${styles.sp2}`} />
+        <span className={`${styles.sparkle} ${styles.sp3}`} />
+        <span className={`${styles.sparkle} ${styles.sp4}`} />
+        <span className={`${styles.ring} ${styles.rg1}`} />
+        <span className={`${styles.ring} ${styles.rg2}`} />
       </div>
 
       {/* 2. Marca d'água */}

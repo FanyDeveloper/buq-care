@@ -1,4 +1,8 @@
+"use client";
+
 import Image from "next/image";
+import { useRef } from "react";
+import { revealOnScroll, useSectionAnimation } from "@/lib/animations";
 import { ArrowIcon } from "@/components/icons/Icons";
 import { featuredProduct, formatPrice, products, showcaseCopy } from "@/data/products";
 import ProductCarousel from "./ProductCarousel";
@@ -11,9 +15,16 @@ import styles from "./Showcase.module.css";
  * para fora da tela à direita. Conteúdo em src/data/products.ts.
  */
 export default function Showcase() {
+  const ref = useRef<HTMLElement>(null);
+
+  // entrada simples: fade + deslocamento discreto, pequeno stagger
+  useSectionAnimation(ref, (el) => {
+    revealOnScroll(el.querySelectorAll(`.${styles.featured}, .${styles.card}`), el.querySelector(`.${styles.layout}`)!, { y: 28, duration: 0.7, stagger: 0.08 });
+  });
+
   const f = featuredProduct;
   return (
-    <section id="vitrine" className={styles.section} aria-labelledby="showcase-title">
+    <section ref={ref} id="vitrine" className={styles.section} aria-labelledby="showcase-title">
       <div className={styles.container}>
         <header className={styles.head}>
           <p className={styles.eyebrow}>

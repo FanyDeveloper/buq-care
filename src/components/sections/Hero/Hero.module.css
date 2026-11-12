@@ -20,10 +20,22 @@
   z-index: -3;
   overflow: hidden;
   background:
-    radial-gradient(120% 80% at 50% 0%, var(--color-white) 0%, transparent 60%),
-    radial-gradient(45% 40% at 72% 78%, rgba(250, 222, 234, 0.45) 0%, transparent 70%),
-    radial-gradient(35% 35% at 12% 12%, rgba(250, 226, 236, 0.35) 0%, transparent 70%),
-    linear-gradient(180deg, #faf7fc 0%, var(--color-lavender-50) 55%, var(--color-lavender-100) 100%);
+    radial-gradient(120% 80% at 50% 0%, #fdfbff 0%, transparent 60%),
+    radial-gradient(44% 48% at 100% 8%, rgba(198, 174, 226, 0.55) 0%, transparent 70%),
+    radial-gradient(42% 52% at 0% 100%, rgba(170, 140, 210, 0.42) 0%, transparent 70%),
+    radial-gradient(45% 40% at 72% 78%, rgba(221, 200, 242, 0.7) 0%, transparent 70%),
+    radial-gradient(35% 35% at 12% 12%, rgba(232, 218, 248, 0.6) 0%, transparent 70%),
+    linear-gradient(180deg, #faf6fe 0%, #f1e9f9 55%, #e4d6f2 100%);
+}
+
+/* base da hero assenta na cor em que a seção seguinte começa (sem "costura") */
+.bg::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 16%;
+  background: linear-gradient(180deg, rgba(229, 215, 242, 0) 0%, #e5d7f2 100%);
+  pointer-events: none;
 }
 
 .bg span {
@@ -46,7 +58,7 @@
   left: 50%;
   top: 52%;
   transform: translate(-42%, -50%);
-  background: radial-gradient(circle, rgba(233, 222, 244, 0.7) 0%, rgba(244, 236, 246, 0.35) 40%, transparent 68%);
+  background: radial-gradient(circle, rgba(214, 192, 240, 0.8) 0%, rgba(234, 220, 248, 0.42) 40%, transparent 68%);
 }
 
 /* Faixa de luz diagonal, lembra tecido acetinado */
@@ -56,9 +68,119 @@
   left: -20vw;
   bottom: -6vw;
   border-radius: 50% !important;
-  background: linear-gradient(100deg, transparent 10%, rgba(255, 255, 255, 0.7) 45%, rgba(198, 174, 226, 0.25) 70%, transparent 90%);
+  background: linear-gradient(100deg, transparent 10%, rgba(255, 255, 255, 0.75) 42%, rgba(198, 174, 226, 0.34) 68%, transparent 90%);
   transform: rotate(-8deg);
   filter: blur(30px);
+}
+
+/* fio de luz acetinado (como as ondas de luz da referência), bem sutil */
+.silkLine {
+  width: 120vw;
+  height: 16vw;
+  left: -10vw;
+  bottom: 4vw;
+  border-radius: 50% !important;
+  background: linear-gradient(95deg, transparent 15%, rgba(255, 255, 255, 0.85) 48%, rgba(221, 205, 238, 0.6) 62%, transparent 85%);
+  transform: rotate(-5deg);
+  filter: blur(12px);
+  opacity: 0.55;
+}
+
+/* ---------- Pontos de luz (bokeh) ---------- */
+.bokeh {
+  filter: blur(18px);
+}
+
+.bk1 {
+  width: 15vw;
+  height: 15vw;
+  left: 4%;
+  top: 30%;
+  background: radial-gradient(circle, rgba(170, 140, 210, 0.5) 0%, transparent 70%);
+}
+
+.bk2 {
+  width: 9vw;
+  height: 9vw;
+  left: 37%;
+  top: 9%;
+  background: radial-gradient(circle, rgba(221, 205, 238, 0.7) 0%, transparent 70%);
+}
+
+.bk3 {
+  width: 18vw;
+  height: 18vw;
+  right: 2%;
+  top: 46%;
+  background: radial-gradient(circle, rgba(157, 124, 196, 0.34) 0%, transparent 70%);
+}
+
+.bk4 {
+  width: 7vw;
+  height: 7vw;
+  right: 26%;
+  top: 14%;
+  background: radial-gradient(circle, rgba(236, 226, 248, 0.85) 0%, rgba(221, 205, 238, 0.3) 50%, transparent 72%);
+  filter: blur(16px);
+}
+
+.bk5 {
+  width: 12vw;
+  height: 12vw;
+  left: 30%;
+  bottom: 4%;
+  background: radial-gradient(circle, rgba(170, 140, 210, 0.42) 0%, transparent 70%);
+}
+
+/* brilhos: ponto de luz com halo violeta */
+.sparkle {
+  width: 7px;
+  height: 7px;
+  background: #fff;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5), 0 0 14px 5px rgba(198, 174, 226, 0.75), 0 0 34px 10px rgba(157, 124, 196, 0.25);
+}
+
+.sp1 {
+  left: 24%;
+  top: 22%;
+}
+
+.sp2 {
+  right: 22%;
+  top: 34%;
+  transform: scale(0.8);
+}
+
+.sp3 {
+  left: 47%;
+  bottom: 14%;
+  transform: scale(0.7);
+}
+
+.sp4 {
+  right: 9%;
+  bottom: 26%;
+  transform: scale(0.9);
+}
+
+/* anéis finos lilás */
+.ring {
+  border: 1px solid rgba(140, 104, 186, 0.45);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.45) 0%, transparent 70%);
+}
+
+.rg1 {
+  width: 18px;
+  height: 18px;
+  right: 15%;
+  top: 22%;
+}
+
+.rg2 {
+  width: 12px;
+  height: 12px;
+  left: 33%;
+  top: 72%;
 }
 
 /* ---------- 2. Marca d'água ---------- */
@@ -382,8 +504,8 @@
 .flowerLotusTop {
   z-index: 1;
   width: 62%;
-  right: 96%;
-  top: 36%;
+  right: 80%;
+  top: 38%;
   transform: rotate(-6deg);
 }
 
@@ -391,8 +513,8 @@
 .flowerHibiscusRight {
   z-index: 1;
   width: 104%;
-  left: 92%;
-  top: 37%;
+  left: 76%;
+  top: 38%;
   transform: rotate(14deg);
 }
 
@@ -400,8 +522,8 @@
 .flowerHibiscusLeft {
   z-index: 1;
   width: 100%;
-  right: 96%;
-  top: 57%;
+  right: 80%;
+  top: 56%;
   transform: rotate(-12deg);
 }
 
@@ -409,8 +531,8 @@
 .flowerLotusBottom {
   z-index: 1;
   width: 134%;
-  left: 88%;
-  top: 62%;
+  left: 72%;
+  top: 60%;
   transform: rotate(4deg);
 }
 
@@ -418,8 +540,8 @@
 .flowerHibiscusFront {
   z-index: 3;
   width: 106%;
-  right: 70%;
-  top: 88%;
+  right: 56%;
+  top: 84%;
   transform: rotate(10deg);
 }
 

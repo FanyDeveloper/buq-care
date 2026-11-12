@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { gsap, useSectionAnimation } from "@/lib/animations";
 import { ArrowIcon } from "@/components/icons/Icons";
 import { BANNER_INTERVAL_MS, banners } from "@/data/banners";
 import styles from "./Banners.module.css";
@@ -19,7 +20,23 @@ export default function Banners() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
+  // troca automática só começa quando o banner é visto pela primeira vez
+  const [started, setStarted] = useState(false);
   const total = banners.length;
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // entrada rápida (~0,7 s): fade + leve escala/subida, sem atraso
+  useSectionAnimation(sectionRef, (el) => {
+    gsap.from(el.querySelector(`.${styles.stage}`), {
+      autoAlpha: 0,
+      y: 24,
+      scale: 0.97,
+      duration: 0.7,
+      ease: "power3.out",
+      clearProps: "transform,opacity,visibility",
+      scrollTrigger: { trigger: el, start: "top 85%", once: true },
+    });
+  });
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -30,15 +47,31 @@ export default function Banners() {
   }, []);
 
   useEffect(() => {
-    if (paused || reducedMotion) return;
+    const el = sectionRef.current;
+    if (!el || started) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setStarted(true);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.5 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [started]);
+
+  useEffect(() => {
+    if (!started || paused || reducedMotion) return;
     const id = window.setTimeout(() => setIndex((i) => (i + 1) % total), BANNER_INTERVAL_MS);
     return () => window.clearTimeout(id);
-  }, [index, paused, reducedMotion, total]);
+  }, [index, started, paused, reducedMotion, total]);
 
   const go = useCallback((i: number) => setIndex(((i % total) + total) % total), [total]);
 
   return (
-    <section id="campanhas" className={styles.section} aria-label="Campanhas Buq Care">
+    <section ref={sectionRef} id="campanhas" className={styles.section} aria-label="Campanhas Buq Care">
       <div className={styles.container}>
         <div
           className={styles.stage}
@@ -105,7 +138,7 @@ export default function Banners() {
                 aria-current={i === index}
               >
                 {/* barra de tempo: reinicia a cada troca (key) */}
-                {i === index && !reducedMotion && (
+                {i === index && started && !reducedMotion && (
                   <span key={index} className={`${styles.timer} ${paused ? styles.timerPaused : ""}`} style={{ animationDuration: `${BANNER_INTERVAL_MS}ms` }} />
                 )}
               </button>

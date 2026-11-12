@@ -6,9 +6,10 @@
   font-family: var(--font-hero);
   color: var(--color-ink);
   background:
-    radial-gradient(50% 40% at 85% 30%, rgba(221, 205, 238, 0.45) 0%, transparent 70%),
-    radial-gradient(40% 35% at 8% 85%, rgba(238, 230, 246, 0.8) 0%, transparent 70%),
-    var(--color-offwhite);
+    radial-gradient(50% 40% at 85% 30%, rgba(198, 174, 226, 0.5) 0%, transparent 70%),
+    radial-gradient(40% 35% at 8% 85%, rgba(221, 205, 238, 0.75) 0%, transparent 70%),
+    radial-gradient(45% 35% at 50% 68%, rgba(198, 174, 226, 0.26) 0%, transparent 70%),
+    linear-gradient(180deg, #e5d7f2 0%, #f3ecfa 28%, var(--color-offwhite) 92%);
   padding: clamp(96px, 12vw, 180px) 0 clamp(80px, 9vw, 140px);
 }
 
@@ -18,7 +19,7 @@
   inset: 0 0 auto 0;
   height: 260px;
   z-index: -1;
-  background: linear-gradient(180deg, var(--color-lavender-100) 0%, rgba(246, 242, 250, 0.6) 45%, transparent 100%);
+  background: linear-gradient(180deg, #e5d7f2 0%, rgba(240, 232, 249, 0.6) 45%, transparent 100%);
 }
 
 .petal {
@@ -44,6 +45,84 @@
   transform: rotate(60deg);
   filter: blur(2px);
   opacity: 0.45;
+}
+
+/* ---------- Iluminação (bokeh, brilhos, anel) ---------- */
+.lights {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.lights span {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.bokeh {
+  filter: blur(20px);
+}
+
+.bk1 {
+  width: 16vw;
+  height: 16vw;
+  right: 6%;
+  top: 6%;
+  background: radial-gradient(circle, rgba(170, 140, 210, 0.42) 0%, transparent 70%);
+}
+
+.bk2 {
+  width: 11vw;
+  height: 11vw;
+  left: 30%;
+  top: 46%;
+  background: radial-gradient(circle, rgba(221, 205, 238, 0.75) 0%, transparent 70%);
+}
+
+.bk3 {
+  width: 20vw;
+  height: 20vw;
+  left: -4%;
+  bottom: 6%;
+  background: radial-gradient(circle, rgba(157, 124, 196, 0.28) 0%, transparent 70%);
+}
+
+.sparkle {
+  width: 7px;
+  height: 7px;
+  background: #fff;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5), 0 0 14px 5px rgba(198, 174, 226, 0.75), 0 0 34px 10px rgba(157, 124, 196, 0.25);
+}
+
+.sp1 {
+  left: 44%;
+  top: 14%;
+}
+
+.sp2 {
+  right: 30%;
+  top: 58%;
+  transform: scale(0.8);
+}
+
+.sp3 {
+  left: 12%;
+  top: 70%;
+  transform: scale(0.7);
+}
+
+.ring {
+  border: 1px solid rgba(140, 104, 186, 0.45);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.45) 0%, transparent 70%);
+}
+
+.rg1 {
+  width: 16px;
+  height: 16px;
+  right: 12%;
+  top: 40%;
 }
 
 /* pétalas extras — pequenas, desfocadas e espaçadas (continuam a queda vinda da hero) */
